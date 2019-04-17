@@ -1,0 +1,57 @@
+#include <stdio.h>  
+// определение символических констант
+#define YES  1 
+#define NO   0 
+int main(void)
+{
+	int n;
+	int qty; // счетчик символов в слове
+	int c;  // текущий символ из потока 
+	int prev_c;// предыдущий символ
+	int flag; // признак слова
+	int cnt;  // счётчик
+	int found; // индикатор того, что искомый признак обнаружен
+	// начальные присваивания (инициализация)
+	cnt = 0;
+	qty = 0;
+	flag = NO;
+	found = NO;
+	prev_c = ' ';
+	printf("n=");
+	scanf_s("%d", &n);
+	// цикл чтения символов из потока, связанного с клавиатурой
+	while( (c = getchar()) != EOF ) 
+	{
+		if (c == ' ' || c == '.' || c == '\n' ||
+			c == ',')
+
+		{    // найден разделитель
+			if( flag == YES) 
+			{     
+				// это первый разделитель после слова
+				if( found == YES ) 
+				{   // число символов в слове больше N
+				cnt ++;
+				}
+			}
+			flag = NO;
+			qty = 0;
+		}
+		else
+		{    
+		 // найдена буква 
+			qty ++;
+		 // проверка количества символов в слове
+			if (qty > n)
+				found = YES;
+			else
+				found = NO;
+			flag = YES;
+
+		}
+		prev_c = c;
+	}
+	printf("number of words = %d\n", cnt);
+	getchar();
+	return 0;
+}
