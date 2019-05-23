@@ -1,0 +1,37 @@
+#include <stdio.h> // определение символических констант 
+#define MAXLINE 1000  
+void process_line(char buffer[]);
+int main(void)
+{
+	char line[MAXLINE];
+	gets_s(line);
+	process_line(line);
+	puts(line);
+	getchar();
+	return 0;
+}
+void process_line(char buffer[])
+{
+	char c;  // текущий символ  
+	int prev_c;  // предыдущий символ  
+	int i;  // позиция текущего символа исходной cтроки 
+	int pos;  // позиция текущего символа результирующей строки  
+	// начальные присваивания (инициализация)  
+	prev_c = ' ';
+	i = 0;
+	pos = 0;
+	// цикл чтения символов из строки  
+	do
+	{
+		c = buffer[i]; // взять текущий символ из буфера  
+		if (c == ' ' && prev_c == ' ')
+		{
+		}
+		else
+		{
+			buffer[pos++] = buffer[i];
+		}
+		prev_c = c;
+		i++;
+	} while (c != '\0');
+}
