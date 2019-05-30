@@ -1,0 +1,49 @@
+#include <stdio.h> 
+#define N 4
+#define K 5
+int main(void)
+{
+	int x[N][K];  // массив из K на N элементов  
+	int min;  // минимальная сумма элементов строки
+	int sum; // сумма элементов строки
+	int num; // номер строки с наименьшей суммой
+	int i, j;  
+// ввод массива  
+	for( i = 0; i < N; i++ )
+		for (j = 0; j < K; j++)
+		scanf_s("%d", &x[i][j]);
+	// нахождение строки с минимальной суммой
+	sum = 0;
+	min = 9999;
+	num = 0;
+	{
+		for (i = 0; i < N; i++)
+		{
+			for (j = 0; j < K; j++)
+			{
+				sum = sum + x[i][j];
+			}
+			if (sum < min)
+			{
+				min = sum;
+				num = i;
+			}
+			sum = 0;
+		}
+	}
+	{
+		for (i = 0; i < N; i++)
+			for (j = 0; j < K; j++)
+				x[num][j] = 0;
+	}
+	// вывод массива  
+	for( i = 0; i < N; i++ ) 
+	{
+		for (j = 0; j < K; j++)
+			printf("%4d ", x[i][j]);
+		printf("\n");
+	}
+	getchar();
+	getchar();
+	return 0;
+	}
