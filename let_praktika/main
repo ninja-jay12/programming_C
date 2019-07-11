@@ -1,6 +1,6 @@
 #pragma warning(disable : 4996) // чиним fopen
 
-#include<stdio.h>
+#include <stdio.h>
 
 #define MAXLINE 1000 // размер массива
 
@@ -38,7 +38,7 @@ void read(char cod[]) // читаем
 	FILE* fp = fopen("file.txt", "r");
 	if (NULL == fp)
 	{
-		printf("error: file not found\n");
+		printf("error: file not found\n"); // если файл с данными отсутствует, выводим ошибку
 		return 0;
 	}
 
@@ -127,7 +127,6 @@ void decoder(char line[]) // раскодировываем
 	int i = 0; // как pos
 	while (i != kolvo) // пока не пройдем каждый элемент
 	{
-		RES[i++] = ' '; // для красоты
 		if (pred == c) // если 2 символа равны, то...
 		{
 			RES[i++] = c; // записываем в результат
@@ -137,7 +136,6 @@ void decoder(char line[]) // раскодировываем
 		{
 			RES[i++] = line[pos++]; // от 3го зависит результат, поэтому его и пишем
 		}
-		RES[i++] = ' '; // для красоты
 		pred = line[pos++]; // переходим к следующим тройкам
 		c = line[pos++]; // тоже самое
 	}
@@ -154,7 +152,7 @@ void writer(char line[]) // записываем результат
 	FILE* in = fopen("result.txt", "a"); // и в файл
 	if (NULL == in)
 	{
-		printf("error: could not create file\n");
+		printf("error: could not create file\n"); // если файл не удалось создать, выводим ошибку
 		return 0;
 	}
 	else
@@ -172,4 +170,4 @@ void ERRORS(char line[]) // вставляем позицию ошибочных
 	{
 		printf("%d ", MISTAKES[pos]); // и вставляем их позиции
 	}
-}
+} // конец программы.
