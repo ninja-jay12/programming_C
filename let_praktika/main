@@ -50,11 +50,12 @@ void read(char cod[]) // читаем
 
 	for (a = 0; cod[a] == '1' || cod[a] == '0' || a > 998; a++, kol_vo++) {} // считаем кол-во элементов в исходном массиве
 
+	printf(" |original data|\n"); // подсказка
+
 	for (a = 0; a != kol_vo; a++) // выводим оригинальный массив
 	{
 		printf("%c", cod[a]);
 	}
-	printf(" original data\n"); // подсказка
 }
 
 void coder(char line[])// кодируем
@@ -78,11 +79,12 @@ void coder(char line[])// кодируем
 		kolvo++;
 	}
 
+	printf(" \n |coded data|\n"); // подсказка
+
 	for (pos = 0; pos != kolvo; pos++) 
 	{
 		printf("%c", line[pos]);
 	}
-	printf(" coded data\n"); // подсказка
 } 
 
 void channel(char line[]) // добавляем ошибки
@@ -109,11 +111,12 @@ void channel(char line[]) // добавляем ошибки
 		}
 	}
 
+	printf("\n |data with mistakes|\n"); // подсказка
+
 	for (pos = 0; pos != kolvo; pos++) // выводим массив с ошибками
 	{
 		printf("%c", line[pos]);
 	}
-	printf(" data with mistakes\n"); // подсказка
 }
 
 void decoder(char line[]) // раскодировываем
@@ -142,11 +145,11 @@ void decoder(char line[]) // раскодировываем
 
 void writer(char line[]) // записываем результат
 {
+	printf("\n |result|\n"); // подсказка
 	for (pos = 0; pos != kolvo; pos++) // в консоль
 	{
 		printf("%c", RES[pos]);
 	}
-	printf("result\n"); // подсказка
 
 	FILE* in = fopen("result.txt", "a"); // и в файл
 	if (NULL == in)
@@ -164,9 +167,9 @@ void writer(char line[]) // записываем результат
 
 void ERRORS(char line[]) // вставляем позицию ошибочных элементов
 {
+	printf("\n |error position|\n"); // подсказка
 	for (pos = 0; pos != mistake; pos++) // перечисляем все ошибки
 	{
 		printf("%d ", MISTAKES[pos]); // и вставляем их позиции
 	}
-	printf("error position\n"); // подсказка
 }
