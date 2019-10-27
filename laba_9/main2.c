@@ -5,7 +5,6 @@ int main(void)
 {  // указатели на структуру типа FILE для входной и выходного файлов
 	int N;
 	int a = 1;
-	char b;
 	printf("N - quantity of symbol in line\n");
 	printf("enter N please\n");
 	scanf_s("%d", &N);
