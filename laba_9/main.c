@@ -21,10 +21,11 @@ int main(void)
 	// открыть файл для записи
 	FILE* fpout = fopen("result.txt", "a"); // создаем файл с результатом
 	
-	{
+	
 		while (!feof(fpin)) // цикл до конца файла  
-		{   // чтение строки   
+		{   // чтение строки
 			ptr = fgets(line, N, fpin);
+			
 			if (ptr == NULL)
 				break; // файл исчерпан
 			while (*ptr != '\0')
@@ -33,23 +34,20 @@ int main(void)
 				{     // достигнута максимальная длина строки  
 					b = *ptr;
 					*ptr = '\n'; // ставим символ "конец строки" 
-					fprintf(fpout, "%c", b);
 					a = 1;
-					
+					a++;
+					fprintf(fpout, "%c", b);
 				}
 				else
 				{
 					a++;
 				}
-				
 				ptr++; // продвигаем указатель по строке
-				
 			}
 			fputs(line, fpout); // запись строки
-			
 		}
 		fclose(fpin); // закрыть входной файл  
 		fclose(fpout); // закрыть выходной файл 
 		return 0;
-	}
 }
+
