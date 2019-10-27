@@ -8,6 +8,7 @@ int main(void)
 	printf("N - quantity of symbol in line\n");
 	printf("enter N please\n");
 	scanf_s("%d", &N);
+	N++;
 	char line[MAXLINE]; // текущая строка  
 	char *ptr;  
  // открыть файл для чтения  
