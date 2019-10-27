@@ -4,8 +4,8 @@
 int main(void)
 {  // указатели на структуру типа FILE для входной и выходного файлов
 	int N;
-	int a = 0;
-	int b;
+	int a = 1;
+	char b;
 	printf("N - quantity of symbol in line\n");
 	printf("enter N please\n");
 	scanf_s("%d", &N);
@@ -24,27 +24,29 @@ int main(void)
 	{
 		while (!feof(fpin)) // цикл до конца файла  
 		{   // чтение строки   
-			ptr = fgets(line, MAXLINE, fpin);
+			ptr = fgets(line, N, fpin);
 			if (ptr == NULL)
 				break; // файл исчерпан
 			while (*ptr != '\0')
 			{
 				if (a == N)
 				{     // достигнута максимальная длина строки  
-					b = *ptr; 
-					*ptr = '\n';// ставим символ "конец строки" 
-					a = 0;
-					fprintf(line[*ptr], fpout);
-					ptr == b;
+					b = *ptr;
+					*ptr = '\n'; // ставим символ "конец строки" 
+					fprintf(fpout, "%c", b);
+					a = 1;
 					
 				}
 				else
 				{
 					a++;
 				}
+				
 				ptr++; // продвигаем указатель по строке
+				
 			}
-			fputs(line, fpout); // запись строки  
+			fputs(line, fpout); // запись строки
+			
 		}
 		fclose(fpin); // закрыть входной файл  
 		fclose(fpout); // закрыть выходной файл 
